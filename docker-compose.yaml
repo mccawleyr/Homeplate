@@ -44,6 +44,11 @@ services:
     environment:
       - TZ=${TZ}
       - SERVER_ADMIN=${SERVER_ADMIN}
+      - HTTP_SERVER_NAME=ryan.mccawley.me
+      - HTTPS_SERVER_NAME=ryan.mccawley.me 
+      - LOG_LEVEL=info
+      - PHP_MEMORY_LIMIT=512M
+      - UPLOAD_MAX_FILESIZE=16M
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.name-ui.rule=Host(`ryan.mccawley.me`)"
@@ -51,8 +56,8 @@ services:
       - "traefik.http.routers.name-ui.tls=true"
       - "traefik.http.routers.name-ui.tls.certresolver=cloudflare"
       - "traefik.http.routers.name-ui.service=name-ui"
-      - "traefik.http.services.name-ui.loadBalancer.server.port=80"
-      - "traefik.http.services.name-ui.loadbalancer.server.scheme=http"
+      - "traefik.http.services.name-ui.loadBalancer.server.port=443"
+      - "traefik.http.services.name-ui.loadbalancer.server.scheme=https"
       - "traefik.http.routers.name-ui.middlewares=name-head,default@file"
       - "traefik.http.middlewares.name-head.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.middlewares.name-head.headers.customResponseHeaders.X-Robots-Tag=none"
@@ -61,7 +66,7 @@ services:
       - "traefik.http.middlewares.name-head.headers.accesscontrolalloworiginlist=*"
       - "traefik.docker.network=traefik_web"
     volumes:
-      - linkstack:/htdocs
+      - linkstack-data:/htdocs
     networks:
       - proxy
     restart: unless-stopped
@@ -89,7 +94,7 @@ services:
       - proxy
 
 volumes:
-  linkstack:
+  linkstack-data:
 
 networks:
   proxy:
