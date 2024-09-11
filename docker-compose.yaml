@@ -21,7 +21,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/data/traefik.yml:/traefik.yml:ro
       - ./traefik/data/acme.json:/acme.json
-      - ./traefik/data/traefik.yml:/traefik.yml:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
@@ -52,8 +51,8 @@ services:
       - "traefik.http.routers.name-ui.tls=true"
       - "traefik.http.routers.name-ui.tls.certresolver=cloudflare"
       - "traefik.http.routers.name-ui.service=name-ui"
-      - "traefik.http.services.name-ui.loadBalancer.server.port=443"
-      - "traefik.http.services.name-ui.loadbalancer.server.scheme=https"
+      - "traefik.http.services.name-ui.loadBalancer.server.port=80"
+      - "traefik.http.services.name-ui.loadbalancer.server.scheme=http"
       - "traefik.http.routers.name-ui.middlewares=name-head,default@file"
       - "traefik.http.middlewares.name-head.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.middlewares.name-head.headers.customResponseHeaders.X-Robots-Tag=none"
@@ -82,6 +81,9 @@ services:
       - "traefik.http.routers.homeassistant.tls=true"
       - "traefik.http.routers.homeassistant.tls.certresolver=cloudflare"
       - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
+      - "traefik.http.routers.homeassistant.middlewares=default@file"
+      - "traefik.http.middlewares.simple-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.homeassistant.middlewares=simple-redirect"
     restart: unless-stopped
     networks:
       - proxy
@@ -92,3 +94,4 @@ volumes:
 networks:
   proxy:
     external: true
+
