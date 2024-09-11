@@ -1,0 +1,30 @@
+# Sensitive information
+secrets.yaml
+.env
+
+# Logs
+home-assistant.log
+
+# Database
+home-assistant_v2.db
+home-assistant_v2.*
+
+# Auth tokens and storage data
+.storage/
+
+# SSL certificates
+ssl/
+acme.json
+
+# Backups and media files
+backups/
+media/
+
+# Custom components
+custom_components/
+
+# Cloud configuration
+.cloud/
+
+homeassistant/.storage/auth
+

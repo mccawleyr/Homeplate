@@ -1,0 +1,94 @@
+services:
+  traefik:
+    image: traefik:v3.1.1
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+      # - 443:443/tcp # Uncomment if you want HTTP3
+      # - 443:443/udp # Uncomment if you want HTTP3
+    environment:
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN} # if using .env
+      TRAEFIK_DASHBOARD_CREDENTIALS: ${TRAEFIK_DASHBOARD_CREDENTIALS}
+    env_file: .env # use .env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/data/traefik.yml:/traefik.yml:ro
+      - ./traefik/data/acme.json:/acme.json
+      - ./traefik/data/traefik.yml:/traefik.yml:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=http"
+      - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.mccawley.me`)"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
+      - "traefik.http.routers.traefik-secure.entrypoints=https"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-dashboard.mccawley.me`)"
+      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
+      - "traefik.http.routers.traefik-secure.tls=true"
+      - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=mccawley.me"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.mccawley.me"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+
+  linkstack:
+    container_name: linkstack
+    image: linkstackorg/linkstack:latest
+    environment:
+      - TZ=${TZ}
+      - SERVER_ADMIN=${SERVER_ADMIN}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.name-ui.rule=Host(`ryan.mccawley.me`)"
+      - "traefik.http.routers.name-ui.entrypoints=https"
+      - "traefik.http.routers.name-ui.tls=true"
+      - "traefik.http.routers.name-ui.tls.certresolver=cloudflare"
+      - "traefik.http.routers.name-ui.service=name-ui"
+      - "traefik.http.services.name-ui.loadBalancer.server.port=443"
+      - "traefik.http.services.name-ui.loadbalancer.server.scheme=https"
+      - "traefik.http.routers.name-ui.middlewares=name-head,default@file"
+      - "traefik.http.middlewares.name-head.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.name-head.headers.customResponseHeaders.X-Robots-Tag=none"
+      - "traefik.http.middlewares.name-head.headers.customResponseHeaders.Strict-Transport-Security=max-age=63072000"
+      - "traefik.http.middlewares.name-head.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.name-head.headers.accesscontrolalloworiginlist=*"
+      - "traefik.docker.network=traefik_web"
+    volumes:
+      - linkstack:/htdocs
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - ./homeassistant:/config
+      - /run/dbus:/run/dbus:ro
+    environment:
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homeassistant.rule=Host(`ha.mccawley.me`)"
+      - "traefik.http.routers.homeassistant.entrypoints=https"
+      - "traefik.http.routers.homeassistant.tls=true"
+      - "traefik.http.routers.homeassistant.tls.certresolver=cloudflare"
+      - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
+    restart: unless-stopped
+    networks:
+      - proxy
+
+volumes:
+  linkstack:
+
+networks:
+  proxy:
+    external: true
