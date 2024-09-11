@@ -8,6 +8,8 @@ home-assistant.log
 # Database
 home-assistant_v2.db
 home-assistant_v2.*
+homeassistant/zigbee.db*
+
 
 # Auth tokens and storage data
 .storage/
