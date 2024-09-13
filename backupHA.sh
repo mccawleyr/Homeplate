@@ -6,7 +6,7 @@ BACKUP_DIR="./backup"  # Change to your desired backup directory
 
 # Get current date details
 TODAY=$(date +'%Y%m%d')
-DAY_OF_MONTH=$(date +'%d')
+DAY_OF_MONTH=01
 MONTH=$(date +'%m')
 YEAR=$(date +'%Y')
 
