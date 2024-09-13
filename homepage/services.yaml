@@ -11,6 +11,10 @@
         icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
         href: https://10.0.1.21:8006
         description: PVE-01
+    - Proxmox:
+        icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://10.0.1.22:8006
+        description: PVE-02
 
 - My Second Group:
     - Linkstack:
