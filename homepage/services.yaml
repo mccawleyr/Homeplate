@@ -30,6 +30,11 @@
         href: https://mccawleyr.github.io
         description: Docs
         target: _blank
+    - HomeAssistant:
+        icon: home-assistant-alt.png
+        href: https://ha.mccawley.me
+        description: Docs
+        target: _blank
 
 - My Third Group:
     - My Third Service:
