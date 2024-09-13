@@ -33,7 +33,7 @@
     - HomeAssistant:
         icon: home-assistant-alt.png
         href: https://ha.mccawley.me
-        description: Docs
+        description: Home Automation
         target: _blank
 
 - My Third Group:
