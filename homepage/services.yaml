@@ -2,24 +2,34 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/services
 
-- My First Group:
+- Hardware:
     - Ubiquity:
         icon: ubiquiti-networks.svg # icons found here https://github.com/walkxcode/dashboard-icons
         href: https://10.0.1.1
         description: Dream Machine Pro-SHIELD
+        target: _blank
     - Proxmox:
         icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
         href: https://10.0.1.21:8006
         description: PVE-01
+        target: _blank
     - Proxmox:
         icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
         href: https://10.0.1.22:8006
         description: PVE-02
+        target: _blank
 
-- My Second Group:
+- Software:
     - Linkstack:
+        icon: linkstack.svg
         href: https://ryan.mccawley.me
         description: Links
+        target: _blank
+    - github.io:
+        icon: jekyll.svc
+        href: https://mccawleyr.github.io
+        description: Docs
+        target: _blank
 
 - My Third Group:
     - My Third Service:

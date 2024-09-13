@@ -8,7 +8,7 @@
     disk: /
 
 - search:
-    provider: google # <--- updated with google
+    provider: duckduckgo
     target: _blank
 
 - datetime:
@@ -16,3 +16,4 @@
     format:
         timeStyle: short
         hour12: false
+
