@@ -8,5 +8,10 @@
     disk: /
 
 - search:
-    provider: duckduckgo
+    provider: google # <--- updated with google
     target: _blank
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
