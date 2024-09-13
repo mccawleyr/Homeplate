@@ -26,7 +26,7 @@
         description: Links
         target: _blank
     - github.io:
-        icon: jekyll.svc
+        icon: jekyll.svg
         href: https://mccawleyr.github.io
         description: Docs
         target: _blank
