@@ -19,6 +19,7 @@ ssl/
 acme.json
 
 # Backups and media files
+backup/
 backups/
 media/
 
