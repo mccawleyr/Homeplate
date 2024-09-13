@@ -2,6 +2,10 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/latest/configs/settings
 
+title: McCawley Network
+
+background: https://images.unsplash.com/photo-1630894337475-05554ef30d8e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+
 providers:
   openweathermap: openweathermapapikey
   weatherapi: weatherapiapikey
