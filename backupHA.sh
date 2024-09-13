@@ -1,5 +1,12 @@
 #!/bin/bash
 
+###
+# 13 Sep 2024
+# Ryan McCawley
+# Crontab:
+# 0 3 * * * /path/to/backup_homeassistant.sh
+###
+
 # Directories
 CONFIG_DIR="./homeassistant/config"  # Change to your Home Assistant config directory
 BACKUP_DIR="./backup"  # Change to your desired backup directory
