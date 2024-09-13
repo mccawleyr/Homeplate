@@ -10,6 +10,9 @@ background: https://images.unsplash.com/photo-1630894337475-05554ef30d8e?q=80&w=
   brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
   opacity: 50 # 0-100
 
+theme: dark
+color: slate
+
 providers:
   openweathermap: openweathermapapikey
   weatherapi: weatherapiapikey
