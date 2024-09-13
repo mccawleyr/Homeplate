@@ -3,14 +3,19 @@
 # https://gethomepage.dev/latest/configs/services
 
 - My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+    - Ubiquity:
+        icon: ubiquiti-networks.svg # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://10.0.1.1
+        description: Dream Machine Pro-SHIELD
+    - Proxmox:
+        icon: proxmox.png # icons found here https://github.com/walkxcode/dashboard-icons
+        href: https://10.0.1.21:8006
+        description: PVE-01
 
 - My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+    - Linkstack:
+        href: https://ryan.mccawley.me
+        description: Links
 
 - My Third Group:
     - My Third Service:
