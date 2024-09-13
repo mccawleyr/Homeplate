@@ -1,1 +1,102 @@
-2024-09-11 00:20:03.728 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2024-09-11 00:48:32.237 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2024-09-11 04:49:09.007 ERROR (MainThread) [zigpy_znp.uart] Received an exception while passing frame to API: TransportFrame(payload=GeneralFrame(header=CommandHeader(id=0xB2, subsystem=Subsystem.ZDO, type=CommandType.AREQ), data=b'\x56\x18\x84'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 417, in from_frame
+    params[param.name], data = param.type.deserialize(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/struct.py", line 319, in deserialize
+    value, data = field_type.deserialize(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/basic.py", line 199, in deserialize
+    raise ValueError(f"Data is too short to contain {byte_size} bytes")
+ValueError: Data is too short to contain 1 bytes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/uart.py", line 73, in data_received
+    self._api.frame_received(frame.payload)
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/api.py", line 846, in frame_received
+    command = command_cls.from_frame(frame, align=self.nvram.align_structs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 424, in from_frame
+    raise ValueError(
+ValueError: Frame data is truncated (parsed {'Src': 0x1856, 'Status': <Status.NOT_SUPPORTED: 132>}), required parameter remains: Param(name='Routes', type=<class 'zigpy.zdo.types.Routes'>, description='Routes', optional=False)
+2024-09-11 04:49:16.086 ERROR (MainThread) [zigpy_znp.uart] Received an exception while passing frame to API: TransportFrame(payload=GeneralFrame(header=CommandHeader(id=0xB2, subsystem=Subsystem.ZDO, type=CommandType.AREQ), data=b'\x6D\xE7\x84'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 417, in from_frame
+    params[param.name], data = param.type.deserialize(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/struct.py", line 319, in deserialize
+    value, data = field_type.deserialize(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/basic.py", line 199, in deserialize
+    raise ValueError(f"Data is too short to contain {byte_size} bytes")
+ValueError: Data is too short to contain 1 bytes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/uart.py", line 73, in data_received
+    self._api.frame_received(frame.payload)
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/api.py", line 846, in frame_received
+    command = command_cls.from_frame(frame, align=self.nvram.align_structs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 424, in from_frame
+    raise ValueError(
+ValueError: Frame data is truncated (parsed {'Src': 0xE76D, 'Status': <Status.NOT_SUPPORTED: 132>}), required parameter remains: Param(name='Routes', type=<class 'zigpy.zdo.types.Routes'>, description='Routes', optional=False)
+2024-09-11 04:49:18.499 ERROR (MainThread) [zigpy_znp.uart] Received an exception while passing frame to API: TransportFrame(payload=GeneralFrame(header=CommandHeader(id=0xB2, subsystem=Subsystem.ZDO, type=CommandType.AREQ), data=b'\x2C\x72\x84'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 417, in from_frame
+    params[param.name], data = param.type.deserialize(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/struct.py", line 319, in deserialize
+    value, data = field_type.deserialize(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/basic.py", line 199, in deserialize
+    raise ValueError(f"Data is too short to contain {byte_size} bytes")
+ValueError: Data is too short to contain 1 bytes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/uart.py", line 73, in data_received
+    self._api.frame_received(frame.payload)
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/api.py", line 846, in frame_received
+    command = command_cls.from_frame(frame, align=self.nvram.align_structs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 424, in from_frame
+    raise ValueError(
+ValueError: Frame data is truncated (parsed {'Src': 0x722C, 'Status': <Status.NOT_SUPPORTED: 132>}), required parameter remains: Param(name='Routes', type=<class 'zigpy.zdo.types.Routes'>, description='Routes', optional=False)
+2024-09-11 04:49:21.067 ERROR (MainThread) [zigpy_znp.uart] Received an exception while passing frame to API: TransportFrame(payload=GeneralFrame(header=CommandHeader(id=0xB2, subsystem=Subsystem.ZDO, type=CommandType.AREQ), data=b'\x7A\x40\x84'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 417, in from_frame
+    params[param.name], data = param.type.deserialize(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/struct.py", line 319, in deserialize
+    value, data = field_type.deserialize(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy/types/basic.py", line 199, in deserialize
+    raise ValueError(f"Data is too short to contain {byte_size} bytes")
+ValueError: Data is too short to contain 1 bytes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/uart.py", line 73, in data_received
+    self._api.frame_received(frame.payload)
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/api.py", line 846, in frame_received
+    command = command_cls.from_frame(frame, align=self.nvram.align_structs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/zigpy_znp/types/commands.py", line 424, in from_frame
+    raise ValueError(
+ValueError: Frame data is truncated (parsed {'Src': 0x407A, 'Status': <Status.NOT_SUPPORTED: 132>}), required parameter remains: Param(name='Routes', type=<class 'zigpy.zdo.types.Routes'>, description='Routes', optional=False)
+2024-09-11 09:24:18.107 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [133037453736208] Received invalid command: {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjY2VlMDYxYzhlNDg0YTZjOWI0YjA3MmZhMjJiOTI5OSIsImlhdCI6MTcyNjA2MTA1NywiZXhwIjoxNzI2MDYyODU3fQ.fgx_3Pip0JnAkzdKv7AHkF4Lhc1kXCl0VoNw-tJCx9U', 'type': 'auth'}
+2024-09-11 19:22:18.573 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [133037372373120] Received invalid command: {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhNGQ1Y2E3ZjBkNDQ0MThmOTA2NDQxODY4YjY0MmNkMCIsImlhdCI6MTcyNjA5NjkzOCwiZXhwIjoxNzI2MDk4NzM4fQ.SjJEzW4gvIugffVGhNRKJMUSR33eHvh7QsZzczGo3Us', 'type': 'auth'}
+2024-09-11 19:22:18.632 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [133037372372832] Received invalid command: {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjY2VlMDYxYzhlNDg0YTZjOWI0YjA3MmZhMjJiOTI5OSIsImlhdCI6MTcyNjA5NjkzOCwiZXhwIjoxNzI2MDk4NzM4fQ.328grAFVY6PCkkeizHdEvvdjoRuUnUXFNSJeqWzvCrs', 'type': 'auth'}
+2024-09-12 07:15:32.810 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133037453727136] from 10.0.1.1 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
+2024-09-12 07:15:41.611 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133037453723968] from 10.0.1.1 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
+2024-09-12 10:25:38.080 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133038011693616] from 174.198.2.78 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
+2024-09-12 21:15:11.691 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133037672741856] from 174.198.2.78 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
+2024-09-12 21:15:11.934 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133037664488320] from 174.198.2.78 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
+2024-09-12 21:15:12.267 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [133037368654960] from 174.198.2.78 (Home Assistant/2024.8.1 (io.robbie.HomeAssistant; build:2024.791; iOS 17.6.1)): Disconnected: Did not receive auth message within 10 seconds
